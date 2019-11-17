@@ -7,6 +7,8 @@ import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import frc.robot.Constants;
+
 public class DriveMotor
 {
     private double currentRPM = 0.0;
@@ -26,6 +28,15 @@ public class DriveMotor
         sparkPID = sparkMotor.getPIDController();
         sparkEncoder = sparkMotor.getEncoder();
 
+        sparkPID.setP(Constants.DRIVE_P);
+        sparkPID.setI(Constants.DRIVE_I);
+        sparkPID.setD(Constants.DRIVE_D);
+        sparkPID.setIZone(Constants.DRIVE_IZ);
+        sparkPID.setFF(Constants.DRIVE_FF);
+        sparkPID.setOutputRange(Constants.DRIVE_MIN_OUTPUT, Constants.DRIVE_MAX_OUTPUT);
+
+        sparkMotor.setInverted(Constants.DRIVE_INTVERT);
+
         sparkMotor.setIdleMode(IdleMode.kCoast);
     }
 
@@ -35,7 +46,8 @@ public class DriveMotor
      */
     public void setDesiredRPM(double rpm)
     {
-        sparkPID.setReference(rpm, ControlType.kVelocity);
+        desiredRPM = rpm;
+        sparkPID.setReference(desiredRPM, ControlType.kVelocity);
     }
 
     /**
@@ -44,7 +56,8 @@ public class DriveMotor
      */
     public double getCurrentRPM()
     {
-        return sparkEncoder.getVelocity();
+        currentRPM = sparkEncoder.getVelocity();
+        return currentRPM;
     }
 
 }

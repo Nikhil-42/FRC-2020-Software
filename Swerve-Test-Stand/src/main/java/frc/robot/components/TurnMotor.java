@@ -28,7 +28,7 @@ public class TurnMotor
         return currentAngle;
     }
    
-    public double setDesiredAngle()
+    public double setDesiredAngle(double angle)
     {
         // TODO 
         // double desiredAngle = cringe.benis();
