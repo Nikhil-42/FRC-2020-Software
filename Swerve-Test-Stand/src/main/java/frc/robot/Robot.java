@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.components.SwervePod;
+import frc.robot.subsystems.Stand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,8 +23,8 @@ import frc.robot.components.SwervePod;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
-
+  public static IO m_oi;
+  public static Stand stand = new Stand();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -34,7 +35,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit()
   {
-    m_oi = new OI();
+    m_oi = new IO();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
