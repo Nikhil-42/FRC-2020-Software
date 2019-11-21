@@ -21,17 +21,18 @@ public class TurnMotor
 
     public double getCurrentAngle()
     {
+        //TODO FIXME
+        //Everything.
         double currentAngle = turnMotor.getSelectedSensorPosition();
+        double abs = turnMotor.getSensorCollection().getPulseWidthPosition();
         currentAngle *= Constants.angleMultiplier;
 
 
         return currentAngle;
     }
    
-    public double setDesiredAngle(double angle)
+    public void setDesiredAngle(double angle)
     {
-        // TODO 
-        // double desiredAngle = cringe.benis();
-        return 0;
+        this.desiredAngle = angle;
     }
 }

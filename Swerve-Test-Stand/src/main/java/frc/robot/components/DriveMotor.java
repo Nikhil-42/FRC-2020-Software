@@ -4,7 +4,6 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
-import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import frc.robot.Constants;
@@ -21,8 +20,9 @@ public class DriveMotor
     /**
      * 
      * @param motorID of the Spark Max
+     * @param motorIndex of the motor index
      */
-    public DriveMotor(int motorID)
+    public DriveMotor(int motorID, int motorIndex)
     {
         sparkMotor = new CANSparkMax(motorID, MotorType.kBrushless);
         sparkPID = sparkMotor.getPIDController();
@@ -35,9 +35,8 @@ public class DriveMotor
         sparkPID.setFF(Constants.DRIVE_FF);
         sparkPID.setOutputRange(Constants.DRIVE_MIN_OUTPUT, Constants.DRIVE_MAX_OUTPUT);
 
-        sparkMotor.setInverted(Constants.DRIVE_INTVERT);
-
-        sparkMotor.setIdleMode(IdleMode.kCoast);
+        sparkMotor.setInverted(Constants.DRIVE_INVERT[motorIndex]);
+        sparkMotor.setIdleMode(Constants.DRIVE_IDLEMODE[motorIndex]);
     }
 
     /**
@@ -59,5 +58,4 @@ public class DriveMotor
         currentRPM = sparkEncoder.getVelocity();
         return currentRPM;
     }
-
 }

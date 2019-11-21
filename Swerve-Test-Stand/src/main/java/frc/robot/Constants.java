@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.revrobotics.CANSparkMax.IdleMode;
+
 public class Constants
 {
     public static final double angleMultiplier = 0;
@@ -11,5 +13,6 @@ public class Constants
     public static final double DRIVE_FF = 0.0001818;
     public static final double DRIVE_MAX_OUTPUT = 1.0;
     public static final double DRIVE_MIN_OUTPUT = -1.0;
-    public static final boolean DRIVE_INTVERT = false;
+    public static final boolean DRIVE_INVERT[] = {true, false, true, false}; //TODO: fix for later motor values
+    public static final IdleMode DRIVE_IDLEMODE[] = {IdleMode.kCoast, IdleMode.kCoast, IdleMode.kCoast, IdleMode.kCoast}; //TODO: fix for later motor values
 }
