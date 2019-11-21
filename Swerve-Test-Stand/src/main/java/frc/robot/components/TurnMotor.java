@@ -19,7 +19,7 @@ public class TurnMotor
     private CANEncoder sparkEncoder;
 
 
-    public TurnMotor(int motorID)
+    public TurnMotor(int motorID, int motorIndex)
     {
         sparkMotor = new CANSparkMax(motorID, MotorType.kBrushed);
         sparkPID = sparkMotor.getPIDController();
@@ -32,9 +32,9 @@ public class TurnMotor
         sparkPID.setFF(Constants.TURN_FF);
         sparkPID.setOutputRange(Constants.TURN_MIN_OUTPUT, Constants.TURN_MAX_OUTPUT);
 
-        sparkMotor.setInverted(Constants.TURN_INTVERT);
+        sparkMotor.setInverted(Constants.TURN_INVERT[motorIndex]);
 
-        sparkMotor.setIdleMode(IdleMode.kCoast);
+        sparkMotor.setIdleMode(Constants.TURN_IDLEMODE[motorIndex]);
         
     }
 
@@ -42,10 +42,10 @@ public class TurnMotor
     {
         //TODO FIXME
         //Everything.
-        double currentAngle = turnMotor.getSelectedSensorPosition();
-        double abs = turnMotor.getSensorCollection().getPulseWidthPosition();
-        currentAngle *= Constants.angleMultiplier;
 
+        currentAngle = sparkEncoder.getPosition();
+        
+        //currentAngle *= Constants.angleMultiplier;
 
         return currentAngle;
     }

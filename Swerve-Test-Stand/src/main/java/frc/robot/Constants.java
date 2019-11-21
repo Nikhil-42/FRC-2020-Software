@@ -22,5 +22,6 @@ public class Constants
     public static final double TURN_FF = 0.0001818;
     public static final double TURN_MAX_OUTPUT = 1.0;
     public static final double TURN_MIN_OUTPUT = -1.0;
-    public static final boolean TURN_INTVERT = false;
+    public static final boolean TURN_INVERT[] = {true, false, true, false}; //TODO: fix for later motor values
+    public static final IdleMode TURN_IDLEMODE[] = {IdleMode.kCoast, IdleMode.kCoast, IdleMode.kCoast, IdleMode.kCoast}; //TODO: fix for later motor values
 }

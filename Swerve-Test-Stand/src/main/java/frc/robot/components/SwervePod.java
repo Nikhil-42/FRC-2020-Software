@@ -9,7 +9,7 @@ public class SwervePod
     public SwervePod(int driveMotorID, int turnMotorID, int podIndex)
     {
         driveMotor = new DriveMotor(driveMotorID, podIndex);
-        turnMotor = new TurnMotor(turnMotorID);
+        turnMotor = new TurnMotor(turnMotorID, podIndex);
     }
 
     public void setDesiredRPM(double speed)
