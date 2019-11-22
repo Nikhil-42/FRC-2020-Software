@@ -8,26 +8,34 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.commands.JoystickDrive;
+import frc.robot.components.SwervePod;
+import frc.robot.utilities.Utils;
 
 /**
  * Add your docs here.
  */
 public class Stand extends Subsystem 
 {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
-  @Override
-  public void initDefaultCommand() 
-  {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new JoystickDrive());
-  }
-
-  public void joystickDrive() {
     
-  }
+    private SwervePod pod = new SwervePod(Constants.DRIVE_POD_ID, Constants.TURN_POD_ID, 0);
+
+    @Override
+    public void initDefaultCommand() 
+    {
+        setDefaultCommand(new JoystickDrive());
+    }
+
+    public void joystickDrive()
+    {
+        double x = Robot.m_oi.getDriverExpoX(1.5);
+        double y = Robot.m_oi.getDriverExpoY(1.5);
+
+        double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) );
+
+        pod.setDesiredRPM(Utils.map(mag, 0, 1, 0, Constants.DRIVE_MAX_RPM * 0.3));
+    }
 
 }

@@ -14,23 +14,23 @@ public class TurnMotor
     private double currentAngle = 0.0;
     private double desiredAngle = 0.0;
     
-    private CANPIDController sparkPID;
+    //private CANPIDController sparkPID;
     private CANSparkMax sparkMotor;
-    private CANEncoder sparkEncoder;
+    //private CANEncoder sparkEncoder;
 
 
     public TurnMotor(int motorID, int motorIndex)
     {
         sparkMotor = new CANSparkMax(motorID, MotorType.kBrushed);
-        sparkPID = sparkMotor.getPIDController();
-        sparkEncoder = sparkMotor.getEncoder();
+        // sparkPID = sparkMotor.getPIDController();
+        // sparkEncoder = sparkMotor.getEncoder();
 
-        sparkPID.setP(Constants.TURN_P);
-        sparkPID.setI(Constants.TURN_I);
-        sparkPID.setD(Constants.TURN_D);
-        sparkPID.setIZone(Constants.TURN_IZ);
-        sparkPID.setFF(Constants.TURN_FF);
-        sparkPID.setOutputRange(Constants.TURN_MIN_OUTPUT, Constants.TURN_MAX_OUTPUT);
+        // sparkPID.setP(Constants.TURN_P);
+        // sparkPID.setI(Constants.TURN_I);
+        // sparkPID.setD(Constants.TURN_D);
+        // sparkPID.setIZone(Constants.TURN_IZ);
+        // sparkPID.setFF(Constants.TURN_FF);
+        // sparkPID.setOutputRange(Constants.TURN_MIN_OUTPUT, Constants.TURN_MAX_OUTPUT);
 
         sparkMotor.setInverted(Constants.TURN_INVERT[motorIndex]);
 
@@ -43,7 +43,7 @@ public class TurnMotor
         //TODO FIXME
         //Everything.
 
-        currentAngle = sparkEncoder.getPosition();
+        //currentAngle = sparkEncoder.getPosition();
         
         //currentAngle *= Constants.angleMultiplier;
 
