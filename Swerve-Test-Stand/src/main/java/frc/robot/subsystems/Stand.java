@@ -30,12 +30,13 @@ public class Stand extends Subsystem
 
     public void joystickDrive()
     {
-        double x = Robot.m_oi.getDriverExpoX(1.5);
-        double y = Robot.m_oi.getDriverExpoY(1.5);
+        //double x = Robot.m_oi.getDriverX();
+        double y = Robot.m_oi.getDriverY();
 
-        double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) );
+        //double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) );
 
-        pod.setDesiredRPM(Utils.map(mag, 0, 1, 0, Constants.DRIVE_MAX_RPM * 0.3));
+        //pod.setDesiredRPM(Utils.map(y, -1, 1, -8, 8));
+        pod.setDesiredRPM(y);
     }
 
 }
