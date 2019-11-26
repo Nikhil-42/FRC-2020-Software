@@ -31,7 +31,7 @@ public class Stand extends Subsystem
     public void joystickDrive()
     {
         //double x = Robot.m_oi.getDriverX();
-        double y = Robot.m_io.getDriverY();
+        double y = Robot.io.getDriverLeftY();
 
         //double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) );
 

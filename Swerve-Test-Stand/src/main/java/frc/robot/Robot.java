@@ -23,7 +23,7 @@ import frc.robot.subsystems.Stand;
  */
 public class Robot extends TimedRobot
 {
-    public static IO m_io;
+    public static IO io;
     public static Stand s_stand;
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        m_io = new IO();
+        io = new IO();
         s_stand = new Stand();
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);

@@ -19,33 +19,33 @@ public class IO
     public static Joystick driver = new Joystick(0);
 
     /**
-     * @return the horizontal axis value from the first driver controller
+     * @return the horizontal axis value from the left driver controller
      */
-    public double getDriverX()
+    public double getDriverLeftX()
     {
         return driver.getX();
     }
 
     /**
-     * @return the vertical axis value from the first joystick on the driver controller
+     * @return the vertical axis value from the left joystick on the driver controller
      */
-    public double getDriverY()
+    public double getDriverLeftY()
     {
         return driver.getY();
     }
 
     /**
-     * @return the horizontal axis value from the second joystick on the driver controller
+     * @return the horizontal axis value from the right joystick on the driver controller
      */
-    public double getDriverZ()
+    public double getDriverRightX()
     {
         return driver.getRawAxis(3);
     }
 
     /**
-     * @return the vertical axis value from the second joystick on the driver controller
+     * @return the vertical axis value from the right joystick on the driver controller
      */
-    public double getDriverW()
+    public double getDriverRightY()
     {
         return driver.getRawAxis(4);
     }
@@ -55,36 +55,36 @@ public class IO
      * Reads the driver controller first joystick's horizontal value and applies an exponential function based on the exponent provided
      * @param exponent determines how steep the exponential function is
      */
-    public double getDriverExpoX(double exponent)
+    public double getDriverExpoLeftX(double exponent)
     {
-        return getExponential(getDriverX(), exponent);
+        return getExponential(getDriverLeftX(), exponent);
     }
 
     /**
      * Reads the driver controller first joystick's vertical value and applies an exponential function based on the exponent provided
      * @param exponent determines how steep the exponential function is
      */
-    public double getDriverExpoY(double exponent)
+    public double getDriverExpoLeftY(double exponent)
     {
-        return getExponential(getDriverY(), exponent);
+        return getExponential(getDriverLeftY(), exponent);
     }
 
     /**
      * Reads the driver controller second joystick's horizontal value and applies an exponential function based on the exponent provided
      * @param exponent determines how steep the exponential function is
      */
-    public double getDriverExpoZ(double exponent)
+    public double getDriverExpoRightX(double exponent)
     {
-        return getExponential(getDriverZ(), exponent);
+        return getExponential(getDriverRightX(), exponent);
     }
 
     /**
      * Reads the driver controller second joystick's vertical value and applies an exponential function based on the exponent provided
      * @param exponent determines how steep the exponential function is
      */
-    public double getDriverExpoW(double exponent)
+    public double getDriverExpoRightY(double exponent)
     {
-        return getExponential(getDriverW(), exponent);
+        return getExponential(getDriverRightY(), exponent);
     }
 
     /**
