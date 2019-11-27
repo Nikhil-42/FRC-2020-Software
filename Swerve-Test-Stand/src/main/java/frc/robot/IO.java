@@ -23,7 +23,7 @@ public class IO
      */
     public double getDriverLeftX()
     {
-        return driver.getX();
+        return deadbandFilter(driver.getX(), 0.08);
     }
 
     /**
@@ -31,7 +31,7 @@ public class IO
      */
     public double getDriverLeftY()
     {
-        return driver.getY();
+        return deadbandFilter(driver.getY(), 0.05);
     }
 
     /**
@@ -39,7 +39,7 @@ public class IO
      */
     public double getDriverRightX()
     {
-        return driver.getRawAxis(3);
+        return deadbandFilter(driver.getRawAxis(3), 0.05); 
     }
 
     /**
@@ -47,7 +47,7 @@ public class IO
      */
     public double getDriverRightY()
     {
-        return driver.getRawAxis(4);
+        return deadbandFilter(driver.getRawAxis(4), 0.05); 
     }
 
 
@@ -85,6 +85,11 @@ public class IO
     public double getDriverExpoRightY(double exponent)
     {
         return getExponential(getDriverRightY(), exponent);
+    }
+    
+    private double deadbandFilter(double value, double deadband)
+    {
+        return Math.abs(value) > deadband ? value : 0;
     }
 
     /**

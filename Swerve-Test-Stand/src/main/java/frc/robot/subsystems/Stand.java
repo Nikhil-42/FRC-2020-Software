@@ -31,12 +31,21 @@ public class Stand extends Subsystem
     public void joystickDrive()
     {
         //double x = Robot.m_oi.getDriverX();
-        double y = Robot.io.getDriverLeftY();
+        double speed = Utils.magnitude(Robot.io.getDriverLeftX(), Robot.io.getDriverLeftY());
+        double theta = Utils.angle(Robot.io.getDriverLeftX(), Robot.io.getDriverLeftY());
 
         //double mag = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) );
 
         //pod.setDesiredRPM(Utils.map(y, -1, 1, -8, 8));
-        pod.setDesiredRPM(y);
+        //System.out.println(theta);
+        pod.setDesiredRPM(speed);
+        pod.setDesiredAngle(theta);
+
     }
 
+
+    public double getAngle()
+    {
+        return pod.getCurrentAngle();
+    }
 }
