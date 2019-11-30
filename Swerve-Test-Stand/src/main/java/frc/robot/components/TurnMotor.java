@@ -45,7 +45,7 @@ public class TurnMotor
       anglePID = new PID(Constants.TURN_P, Constants.TURN_I, Constants.TURN_D);
       
       // get the initial error and put valid data in the telemetry from the imu
-      IMUAngleProcessing();
+      AngleProcessing();
       
       // set initial desired heading to the current actual heading.
       desiredAngle = currentAngle;
@@ -74,7 +74,7 @@ public class TurnMotor
       this.desiredAngle = AverageAngle.getAverage();
 
       // get PID error signal to send to the motor
-      IMUAngleProcessing();
+      AngleProcessing();
 
       // send to motor, signal -1 to 1
       sparkMotor.set(vTheta);
@@ -82,7 +82,7 @@ public class TurnMotor
   // grab the current wheel angel and crunch out the value needed to correct to desired angle.
   // This method produces the angle input component to the motor from the PID that holds the
   // desired angle.  The error from the PID is sent to the motors in the vTheta variable.
-  private void IMUAngleProcessing() 
+  private void AngleProcessing() 
   {
       /* fetch the encoder ( +/- 1 = 1 rotation )
          mod div to get number between -0.99999... and 0.99999...          */
