@@ -21,7 +21,12 @@ public class Utils
         angle = Math.atan2(y, x);  // returns -PI to PI
         
         // convert to always positive angle between 0 and 2PI
-        if(angle < 0.0) angle += 2 * Math.PI;
+        if(angle < 0.0)
+        {
+           angle = angle + (2 * Math.PI); 
+        }
+        
         return angle;
     }
+
 }

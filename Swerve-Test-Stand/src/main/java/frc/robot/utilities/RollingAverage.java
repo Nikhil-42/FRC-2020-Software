@@ -20,7 +20,9 @@ public class RollingAverage {
     if (++index == size) index = 0; // cheaper than modulus
   }
 
-  public double getAverage() {
-    return total / size;
+  public double getAverage() 
+  {
+    double val = total / size;
+    return val;
   }
 }

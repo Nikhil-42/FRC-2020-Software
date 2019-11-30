@@ -94,6 +94,8 @@ public class TurnMotor
       //convert to radians 
       currentAngle *= (2 * Math.PI);
       vTheta = anglePID.getOutput(currentAngle, desiredAngle);
+      System.out.println(currentAngle);
+      System.out.println(desiredAngle);
   }
 
   

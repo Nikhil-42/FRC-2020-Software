@@ -19,14 +19,14 @@ public class Constants
     public static final int DRIVE_MAX_CURRENT_RUN = 30;
 
 
-    public static final double TURN_P = 0.1;
-    public static final double TURN_I = 0.0;
+    public static final double TURN_P = 0.5;
+    public static final double TURN_I = 0.002;
     public static final double TURN_D = 0.00;
     public static final double OutputLowLimit = -1;
     public static final double OutputHighLimit = 1;
     public static final double MaxIOutput = 1;
     public static final double OutputRampRate = 0.1;
-    public static final double OutputFilter = 0;
+    public static final double OutputFilter = 0.1;
     public static final double SetpointRange = 2 * Math.PI;
 
     public static final boolean TURN_INVERT[] = {false, false, true, false}; //TODO: fix for later motor values

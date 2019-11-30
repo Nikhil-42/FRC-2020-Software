@@ -52,7 +52,7 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic()
     {
-        System.out.println(s_stand.getAngle()*2*Math.PI); 
+        //System.out.println(s_stand.getAngle()*2*Math.PI); 
     }
 
     /**
