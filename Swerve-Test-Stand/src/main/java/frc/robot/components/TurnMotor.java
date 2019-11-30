@@ -85,19 +85,22 @@ public class TurnMotor
   private void AngleProcessing() 
   {
       /* fetch the encoder ( +/- 1 = 1 rotation )
-         mod div to get number between -0.99999... and 0.99999...          */
+         mod div to get number between -0.99999... and 0.99999... */
       currentAngle = sparkEncoder.getPosition() % 1; 
       
       // always keep in terms of positive angle 0 to .99999...
-      if(currentAngle < 0.0) currentAngle += 1; 
-              
+      if(currentAngle < 0) 
+      {
+          currentAngle = currentAngle + 1; 
+      }    
       //convert to radians 
-      currentAngle *= (2 * Math.PI);
+      currentAngle = currentAngle + (2 * Math.PI);
+
       vTheta = anglePID.getOutput(currentAngle, desiredAngle);
+
       System.out.println(currentAngle);
       System.out.println(desiredAngle);
   }
-
   
   public void zeroEncoder()
   {
