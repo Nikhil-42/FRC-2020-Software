@@ -40,10 +40,9 @@ public class Stand extends Subsystem
         //System.out.println(theta);
         pod.setDesiredRPM(0);
         pod.setDesiredAngle(theta);
-
     }
 
-
+    
     public double getAngle()
     {
         return pod.getCurrentAngle();

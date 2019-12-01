@@ -50,15 +50,12 @@ public class TurnMotor
       // set initial desired heading to the current actual heading.
       desiredAngle = currentAngle;
       
-      // smooths out the joystick input so it doesn't slam hi/lo
-      AverageAngle = new RollingAverage(Constants.headdingAverageNumberOfSamples);
-      
       // initially setup the PID parameters
       anglePID.setOutputLimits(Constants.OutputLowLimit, Constants.OutputHighLimit);
       anglePID.setMaxIOutput(Constants.MaxIOutput);
       anglePID.setOutputRampRate(Constants.OutputRampRate);
       anglePID.setOutputFilter(Constants.OutputFilter);
-      anglePID.setSetpointRange(Constants.SetpointRange);
+      anglePID.setSetpointRange(Constants.SetpointRange, Constants.SetpointRange);
       anglePID.setContinousInputRange(2 * Math.PI);  // sets circular continuous input range
       anglePID.setContinous(true);  // lets PID know we are working with a continuous range [0-360)
   }
@@ -67,18 +64,28 @@ public class TurnMotor
       return this.currentAngle;
   }
  
+  // takes -PI to PI
   public void setDesiredAngle(double angle)
   {
-      AverageAngle.add(angle);  // average in the latest input angle to smooth out any noise
+//    System.out.printf("angle %.4f \n" ,angle);
+    // convert to always positive angle between 0 and 2PI
+    if(angle < 0)
+    { 
+      angle = angle + (2 * Math.PI); 
+    }
+    if(angle < 0) // make darn sure we don't return a negative value
+    {
+      angle = 0;
+    }
+ 
+    this.desiredAngle = angle;
 
-      this.desiredAngle = AverageAngle.getAverage();
+    // get PID error signal to send to the motor
+    AngleProcessing();
 
-      // get PID error signal to send to the motor
-      AngleProcessing();
-
-      // send to motor, signal -1 to 1
-      sparkMotor.set(vTheta);
-  }
+    // send to motor, signal -1 to 1
+    sparkMotor.set(vTheta);
+  } 
   // grab the current wheel angel and crunch out the value needed to correct to desired angle.
   // This method produces the angle input component to the motor from the PID that holds the
   // desired angle.  The error from the PID is sent to the motors in the vTheta variable.
@@ -94,12 +101,12 @@ public class TurnMotor
           currentAngle = currentAngle + 1; 
       }    
       //convert to radians 
-      currentAngle = currentAngle + (2 * Math.PI);
+      currentAngle = currentAngle * (2 * Math.PI);
 
       vTheta = anglePID.getOutput(currentAngle, desiredAngle);
 
-      System.out.println(currentAngle);
-      System.out.println(desiredAngle);
+//    System.out.printf("currentAngle %.4f \n", currentAngle);
+//    System.out.printf("desiredAngle %.4f \n", desiredAngle);
   }
   
   public void zeroEncoder()
