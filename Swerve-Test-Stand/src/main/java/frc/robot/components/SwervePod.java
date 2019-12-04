@@ -8,8 +8,15 @@ public class SwervePod
 
     public SwervePod(int driveMotorID, int turnMotorID, int podIndex)
     {
-        driveMotor = new DriveMotor(driveMotorID, podIndex);
+        driveMotor = new DriveMotor(driveMotorID, podIndex); 
         turnMotor = new TurnMotor(turnMotorID, podIndex);
+    }
+
+    // main process to keep updating values and PID processing
+    public void processPod()
+    {
+        // driveMotor.processDrive();  // Not currently needed because Sparc does PID work
+        turnMotor.processTurn();
     }
 
     public void setDesiredRPM(double speed)
