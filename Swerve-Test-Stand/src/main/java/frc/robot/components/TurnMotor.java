@@ -53,8 +53,26 @@ public class TurnMotor
       anglePID.setSetpointRange(Constants.SetpointRange, Constants.SetpointRange);
       anglePID.setContinousInputRange(2 * Math.PI);  // sets circular continuous input range
       anglePID.setContinous(true);  // lets PID know we are working with a continuous range [0-360)
+
+      // diagnostic print. comment out of production code
+      System.out.printf("desiredAngle , currentAngle: %.4f , %.4f", desiredAngle, currentAngle);
+
   }
   
+  // process loop, called every execution cycle
+  public void processTurn()
+  {
+    // get PID error signal to send to the motor
+    AngleProcessing();
+
+    // send to motor, signal -1 to 1
+    sparkMotor.set(vTheta);
+
+    // diagnostic print. comment out of production code
+    System.out.printf("\b\b\b\b\b\b\b\b\b\b\b\b\b");
+    System.out.printf("%.4f , %.4f", desiredAngle, currentAngle);
+  }
+
   // basic getter for angle.  Possible use for Dashboard
   public double getCurrentAngle()
   {
@@ -66,27 +84,13 @@ public class TurnMotor
   // This must be called repeatedly in the main robot loop.
   public void setDesiredAngle(double angle)
   {
-//    System.out.printf("angle %.4f \n" ,angle);
     // convert to always positive angle between 0 and 2PI
     if(angle < 0)
     { 
       angle = angle + (2 * Math.PI); 
     }
-
-    // TODO test without this after setting up to have Sparc return radians from the encoder.
-    // may have to go back in.
-    //if(angle < 0) // make darn sure we don't return a negative value
-    //{
-    //  angle = 0;
-    //}
  
     this.desiredAngle = angle;
-
-    // get PID error signal to send to the motor
-    AngleProcessing();
-
-    // send to motor, signal -1 to 1
-    sparkMotor.set(vTheta);
   } 
 
 
@@ -106,9 +110,6 @@ public class TurnMotor
       }    
 
       vTheta = anglePID.getOutput(currentAngle, desiredAngle);
-
-//    System.out.printf("currentAngle %.4f \n", currentAngle);
-//    System.out.printf("desiredAngle %.4f \n", desiredAngle);
   }
   
   public void zeroEncoder()
