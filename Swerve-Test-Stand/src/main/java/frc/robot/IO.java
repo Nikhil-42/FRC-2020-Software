@@ -95,22 +95,22 @@ public class IO
 
     public boolean getButtonAPressed()
     {
-        return driver.getRawButton(0);
+        return driver.getRawButton(1);
     }
 
     public boolean getButtonBPressed()
     {
-        return driver.getRawButton(1);
+        return driver.getRawButton(2);
     }
     
     public boolean getButtonXPressed()
     {
-        return driver.getRawButton(2);
+        return driver.getRawButton(3);
     }
 
     public boolean getButtonYPressed()
     {
-        return driver.getRawButton(3);
+        return driver.getRawButton(4);
     }
 
 
