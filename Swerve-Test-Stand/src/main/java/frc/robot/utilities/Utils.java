@@ -14,21 +14,11 @@ public class Utils
         return Math.pow(Math.pow(x, 2) + Math.pow(y, 2), 0.5);
     }
 
-    // convert cartisan joystic coords into angle 0 to 2PI
+    // convert cartisan joystic coords into angle -PI to PI
     public static double angle(final double x, final double y) 
     {
         double angle;
         angle = Math.atan2(y, x);  // returns -PI to PI
-        
-        // convert to always positive angle between 0 and 2PI
-        if(angle < 0)
-        {
-           angle = angle + (2 * Math.PI); 
-        }
-        if(angle < 0) // make darn sure we don't return a negative value
-        {
-            angle = 0;
-        }
         return angle;
     }
 

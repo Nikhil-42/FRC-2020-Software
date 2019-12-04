@@ -38,7 +38,7 @@ public class Stand extends Subsystem
 
         //pod.setDesiredRPM(Utils.map(y, -1, 1, -8, 8));
         //System.out.println(theta);
-        pod.setDesiredRPM(0);
+        pod.setDesiredRPM(speed);
 
         if(Robot.io.getButtonAPressed())
         {
@@ -61,7 +61,7 @@ public class Stand extends Subsystem
         }
     }
 
-
+    
     public double getAngle()
     {
         return pod.getCurrentAngle();

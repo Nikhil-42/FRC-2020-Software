@@ -30,7 +30,8 @@ public class PID
 
   private double outputFilter=0;
 
-  private double setpointRange=0;
+  private double setpointRangeLo=0;
+  private double setpointRangeHi=0;
   private double continousInputRange=0;
 
   private boolean continous;
@@ -253,8 +254,8 @@ public class PID
     this.setpoint = setpoint;
 
     // Ramp the setpoint used for calculations if user has opted to do so
-    if(setpointRange!=0){
-      setpoint=constrain(setpoint,actual-setpointRange,actual+setpointRange);
+    if(setpointRangeHi!=0 && setpointRangeLo!=0){
+      setpoint=constrain(setpoint,actual-setpointRangeLo,actual+setpointRangeHi);
     }
 
     // Do the simple parts of the calculations
@@ -420,9 +421,10 @@ public class PID
    * during large setpoint adjustments. Increases lag and I term if range is too small.
    * @param range, with units being the same as the expected sensor range.
    */
-  public void setSetpointRange(double range)
+  public void setSetpointRange(double rangeLo, double rangeHi)
   {
-    setpointRange=range;
+    setpointRangeLo=rangeLo;
+    setpointRangeHi=rangeHi;
   }
 
   /**
