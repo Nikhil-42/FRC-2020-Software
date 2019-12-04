@@ -92,6 +92,28 @@ public class IO
         return Math.abs(value) > deadband ? value : 0;
     }
 
+
+    public boolean getButtonAPressed()
+    {
+        return driver.getRawButton(0);
+    }
+
+    public boolean getButtonBPressed()
+    {
+        return driver.getRawButton(1);
+    }
+    
+    public boolean getButtonXPressed()
+    {
+        return driver.getRawButton(2);
+    }
+
+    public boolean getButtonYPressed()
+    {
+        return driver.getRawButton(3);
+    }
+
+
     /**
      * This function takes a joystick input and applies an exponential scaling
      */

@@ -39,8 +39,26 @@ public class Stand extends Subsystem
         //pod.setDesiredRPM(Utils.map(y, -1, 1, -8, 8));
         //System.out.println(theta);
         pod.setDesiredRPM(0);
-        pod.setDesiredAngle(theta);
 
+        if(Robot.io.getButtonAPressed())
+        {
+          pod.setDesiredAngle(Math.PI);
+        }
+
+        if(Robot.io.getButtonBPressed())
+        {
+          pod.setDesiredAngle(2*Math.PI/3);
+        }
+
+        if(Robot.io.getButtonXPressed())
+        {
+          pod.setDesiredAngle(Math.PI/2);
+        }
+
+        if(Robot.io.getButtonYPressed())
+        {
+          pod.setDesiredAngle(0);
+        }
     }
 
 
