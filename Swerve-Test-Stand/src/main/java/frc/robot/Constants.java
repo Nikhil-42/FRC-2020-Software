@@ -19,13 +19,13 @@ public class Constants
     public static final int DRIVE_MAX_CURRENT_RUN = 30;
 
 
-    public static final double TURN_P = 0.55;  //.25  .3 gives a little overshoot on the test stand.
+    public static final double TURN_P = 0.5;  //.2625 Stable - .3 gives a little overshoot on the test stand.
     public static final double TURN_I = 0.0;  //.005
     public static final double TURN_D = 0.0; 
     public static final double OutputLowLimit = -1;
     public static final double OutputHighLimit = 1;
     public static final double MaxIOutput = 1;
-    public static final double OutputRampRate = 1;
+    public static final double OutputRampRate = 5;
     public static final double OutputFilter = 0.0;
     public static final double SetpointRange = 2 * Math.PI;
 
