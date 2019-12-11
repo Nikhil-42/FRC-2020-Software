@@ -29,16 +29,27 @@ public class Chassis extends Subsystem
     //          |						 |
     //          \________________________/
     
-    private SwervePod pod1 = new SwervePod(Constants.DRIVE_POD_ID, Constants.TURN_POD_ID, Constants.POD_FRONT_LEFT);
-    private SwervePod pod2 = new SwervePod(Constants.DRIVE_POD_ID, Constants.TURN_POD_ID, Constants.POD_FRONT_RIGHT);
-    private SwervePod pod3 = new SwervePod(Constants.DRIVE_POD_ID, Constants.TURN_POD_ID, Constants.POD_BACK_LEFT);
-    private SwervePod pod4 = new SwervePod(Constants.DRIVE_POD_ID, Constants.TURN_POD_ID, Constants.POD_BACK_RIGHT);
+    private SwervePod pod1 = new SwervePod(Constants.POD_1_DRIVE, Constants.POD_1_TURN, Constants.POD_FRONT_LEFT);
+    private SwervePod pod2 = new SwervePod(Constants.POD_2_DRIVE,Constants.POD_2_TURN, Constants.POD_FRONT_RIGHT);
+    private SwervePod pod3 = new SwervePod(Constants.POD_3_DRIVE, Constants.POD_3_TURN, Constants.POD_BACK_LEFT);
+    private SwervePod pod4 = new SwervePod(Constants.POD_4_DRIVE, Constants.POD_4_TURN, Constants.POD_BACK_RIGHT);
+
+    public Chassis()
+    {
+           pod1.zeroEncoder();
+        pod2.zeroEncoder();
+        pod3.zeroEncoder();
+        pod4.zeroEncoder();
+    }
+
 
     @Override
     public void initDefaultCommand() 
     {
         setDefaultCommand(new JoystickDriveChassis());
     }
+
+
 
     /**
      * Function called by the JoystickDriveChassis command to drive the robot
@@ -54,6 +65,8 @@ public class Chassis extends Subsystem
 
         //double x = Robot.m_oi.getDriverX();
         double speed = Utils.magnitude(Robot.io.getDriverLeftX(), Robot.io.getDriverLeftY());
+        
+        //double speed = 0.01;
 
         // double angle = Utils.angle(Robot.io.getDriverRightX(), Robot.io.getDriverRightY());
 
@@ -73,7 +86,7 @@ public class Chassis extends Subsystem
             pod2.setDesiredAngle(Math.PI);
             pod3.setDesiredAngle(Math.PI);
             pod4.setDesiredAngle(Math.PI);
-        }
+         }
 
         if(Robot.io.getButtonBPressed())
         {
@@ -106,6 +119,7 @@ public class Chassis extends Subsystem
      */
     public double[] getAngle()
     {
-        return new double[] {pod1.getCurrentAngle(), pod2.getCurrentAngle(), pod3.getCurrentAngle(), pod4.getCurrentAngle()};
+        //return new double[] {pod1.getCurrentAngle(), pod2.getCurrentAngle(), pod3.getCurrentAngle(), pod4.getCurrentAngle()};
+        return new double[]{};
     }
 }

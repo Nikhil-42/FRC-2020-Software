@@ -69,7 +69,7 @@ public class TurnMotor
     sparkMotor.set(vTheta);
 
     // diagnostic print. comment out of production code
-    // System.out.printf("desiredAngle: , currentAngle: %.4f , %.4f , %.4f  \n", desiredAngle, currentAngle, vTheta);
+    System.out.printf("desiredAngle: , currentAngle: %.4f , %.4f , %.4f  \n", desiredAngle, currentAngle, vTheta);
   }
 
   // basic getter for angle.  Possible use for Dashboard
