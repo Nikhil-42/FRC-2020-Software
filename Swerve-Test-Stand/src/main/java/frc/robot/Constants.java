@@ -35,4 +35,22 @@ public class Constants
     public static final int DRIVE_POD_ID = 1;
     public static final int TURN_POD_ID = 4;
 
+    // Better naming scheme for multiple pods
+    public static final int POD_1_DRIVE = 13;
+    public static final int POD_1_TURN = 9;
+
+    public static final int POD_2_DRIVE = 4;
+    public static final int POD_2_TURN = 8;
+
+    public static final int POD_3_DRIVE = 16;
+    public static final int POD_3_TURN = 12;
+
+    public static final int POD_4_DRIVE = 1;
+    public static final int POD_4_TURN = 5;
+
+    public static final int POD_FRONT_LEFT  = 0;
+    public static final int POD_FRONT_RIGHT = 1;
+    public static final int POD_BACK_LEFT   = 2;
+    public static final int POD_BACK_RIGHT  = 3;
+
 }
