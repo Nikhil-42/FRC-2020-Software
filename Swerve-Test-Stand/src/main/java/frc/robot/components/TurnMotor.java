@@ -55,7 +55,7 @@ public class TurnMotor
       anglePID.setContinous(true);  // lets PID know we are working with a continuous range [0-360)
 
       // diagnostic print. comment out of production code
-      System.out.printf("desiredAngle , currentAngle: %.4f , %.4f", desiredAngle, currentAngle);
+      System.out.printf("desiredAngle: , currentAngle: %.4f , %.4f , %.4f  \n", desiredAngle, currentAngle, vTheta);
 
   }
   
@@ -67,6 +67,9 @@ public class TurnMotor
 
     // send to motor, signal -1 to 1
     sparkMotor.set(vTheta);
+
+    // diagnostic print. comment out of production code
+    // System.out.printf("desiredAngle: , currentAngle: %.4f , %.4f , %.4f  \n", desiredAngle, currentAngle, vTheta);
   }
 
   // basic getter for angle.  Possible use for Dashboard
