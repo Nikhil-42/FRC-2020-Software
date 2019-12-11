@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Stand;
 
 /**
@@ -24,7 +25,8 @@ import frc.robot.subsystems.Stand;
 public class Robot extends TimedRobot
 {
     public static IO io;
-    public static Stand s_stand;
+    //public static Stand s_stand;
+    public static Chassis chassis;
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -36,7 +38,8 @@ public class Robot extends TimedRobot
     public void robotInit()
     {
         io = new IO();
-        s_stand = new Stand();
+        //s_stand = new Stand();
+        chassis = new Chassis();
         // chooser.addOption("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", m_chooser);
     }
