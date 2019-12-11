@@ -283,6 +283,7 @@ public class PID
       }
     }
 
+
     // Calculate F output. Notice, this depends only on the setpoint, and not the error.
     Foutput = F*setpoint;
 
@@ -302,6 +303,22 @@ public class PID
     // Calculate D Term
     // Note, this is negative. This actually "slows" the system if it's doing
     // the correct thing, and small values helps prevent output spikes and overshoot
+  
+    if(continous)
+    {
+      if(Math.abs(actual-lastActual) > Math.PI)
+      {
+        if(actual > lastActual)
+        {
+          actual -= 2*Math.PI;
+        }
+        else
+        {
+          actual += 2*Math.PI;
+        }
+      }
+    }
+
     Doutput = -D*(actual-lastActual);
     lastActual = actual;
 

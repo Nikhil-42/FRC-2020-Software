@@ -48,12 +48,12 @@ public class Stand extends Subsystem
 
         if(Robot.io.getButtonAPressed())
         {
-          pod.setDesiredAngle(Math.PI);
+          pod.setDesiredAngle(Math.PI/6);
         }
 
         if(Robot.io.getButtonBPressed())
         {
-          pod.setDesiredAngle(3*Math.PI/2);
+          pod.setDesiredAngle(Math.PI);
         }
 
         if(Robot.io.getButtonXPressed())
@@ -61,6 +61,7 @@ public class Stand extends Subsystem
           pod.setDesiredAngle(Math.PI/2);
         }
 
+        
         if(Robot.io.getButtonYPressed())
         {
           pod.setDesiredAngle(0);
