@@ -28,8 +28,12 @@ public class TurnMotor
   public TurnMotor(int motorID, int motorIndex)
   {
       sparkMotor = new CANSparkMax(motorID, MotorType.kBrushed);
-      sparkEncoder = sparkMotor.getEncoder(EncoderType.kQuadrature, 4096 * 6);
-      sparkEncoder.setPositionConversionFactor(2*Math.PI);  // encoder will return radians
+
+      //       sparkEncoder = sparkMotor.getEncoder(EncoderType.kQuadrature, 4096 * 6);
+
+      sparkEncoder = sparkMotor.getEncoder(EncoderType.kQuadrature, 8192 * 6);
+
+     sparkEncoder.setPositionConversionFactor(2*Math.PI);  // encoder will return radians
       // zero the encoder on init to avoid haveing to power off the bot every time.
       sparkEncoder.setPosition(0.0);
 
